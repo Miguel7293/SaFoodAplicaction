@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">SaFoodAplication</string>
+    <string name="google_login">Ingresa Con Google</string>
+    <string name="register_text">Registrate</string>
 </resources>
