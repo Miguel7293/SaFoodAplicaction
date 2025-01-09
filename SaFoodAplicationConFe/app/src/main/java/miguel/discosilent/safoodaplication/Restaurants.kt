@@ -1,6 +1,6 @@
 package miguel.discosilent.safoodaplication
 
-class Restaurant(
+data class Restaurant(
     val name: String,
     val image_of_rest: String,
     val category: String,
