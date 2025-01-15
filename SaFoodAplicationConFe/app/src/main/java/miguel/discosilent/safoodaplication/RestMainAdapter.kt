@@ -27,7 +27,8 @@ class MainGridAdapter(private val restaurants: List<Restaurant>) :
             val imageView = view.findViewById<ImageView>(R.id.image_rest)
             val nameTextView = view.findViewById<TextView>(R.id.name_rest)
 
-            Picasso.get().load(restaurant.image_of_rest).into(imageView)
+            Picasso.get().load(restaurant.image_of_rest).resize(500, 500).centerCrop()
+                .into(imageView)
             nameTextView.text = restaurant.name
         }
     }

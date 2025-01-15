@@ -29,7 +29,7 @@ class RestAdapter(val restaurants: List<Restaurant>) :
             val imageView = view.findViewById<ImageView>(R.id.image_rest)
             val CategoryResTextView = view.findViewById<TextView>(R.id.category_res)
 
-            Picasso.get().load(restaurant.image_of_rest).into(imageView)
+            Picasso.get().load(restaurant.image_of_rest).resize(500, 500).centerCrop().into(imageView)
             horaryTextView.text = restaurant.horario
             nameTextView.text = restaurant.name
             CategoryResTextView.text = restaurant.category
