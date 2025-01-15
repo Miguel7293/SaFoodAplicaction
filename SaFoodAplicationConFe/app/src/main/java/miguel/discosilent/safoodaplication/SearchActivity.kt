@@ -21,6 +21,7 @@ class SearchActivity : AppCompatActivity() {
 
         textSearch = findViewById(R.id.SearchText)
 
+        textSearch.requestFocus()
 
         textSearch.addTextChangedListener { reference ->
             val restaurantFiltered = restaurant.filter { it.name.contains(reference.toString()) }
