@@ -23,6 +23,7 @@ class SearchActivity : AppCompatActivity() {
 
         textSearch.requestFocus()
 
+
         textSearch.addTextChangedListener { reference ->
             val restaurantFiltered = restaurant.filter { it.name.contains(reference.toString()) }
         }
@@ -32,8 +33,8 @@ class SearchActivity : AppCompatActivity() {
 
     private fun initRecycler() {
         val recyclerView = findViewById<RecyclerView>(R.id.list_searched)
-        recyclerView.layoutManager = LinearLayoutManager(this)
         val adapter = RestAdapter(restaurant)
+        recyclerView.layoutManager = LinearLayoutManager(this)
         recyclerView.adapter = adapter
     }
 }

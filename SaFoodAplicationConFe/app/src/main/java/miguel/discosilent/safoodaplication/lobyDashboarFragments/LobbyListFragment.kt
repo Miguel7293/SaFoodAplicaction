@@ -7,12 +7,17 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.EditText
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import miguel.discosilent.safoodaplication.MainGridAdapter
 import miguel.discosilent.safoodaplication.R
+import miguel.discosilent.safoodaplication.RestaurantProvider
 import miguel.discosilent.safoodaplication.SearchActivity
 
 
 private const val ARG_PARAM1 = "param1"
 private const val ARG_PARAM2 = "param2"
+private val restaurant = RestaurantProvider.restaurants
 
 class LobbyListFragment : Fragment() {
     // TODO: Rename and change types of parameters
@@ -30,7 +35,22 @@ class LobbyListFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        // Encuentra el EditText por ID
+
+        // Configura el RecyclerView para Hot Deals
+        val hotDealsRecyclerView = view.findViewById<RecyclerView>(R.id.hot_deals_recycler_view)
+        val hotDealsAdapter = MainGridAdapter(restaurant) // Lista de Hot Deals
+        hotDealsRecyclerView.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
+        hotDealsRecyclerView.adapter = hotDealsAdapter
+
+        // Configura el RecyclerView para Recommendations
+        val recommendationsRecyclerView = view.findViewById<RecyclerView>(R.id.recommendations_recycler_view)
+        val recommendationsAdapter = MainGridAdapter(restaurant) // Lista de Recommendations
+        recommendationsRecyclerView.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
+        recommendationsRecyclerView.adapter = recommendationsAdapter
+
+
+
+        // Encuentra el Edit Text por ID
         val searchText: EditText = view.findViewById(R.id.editTextSearch)
 
 
