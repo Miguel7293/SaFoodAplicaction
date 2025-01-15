@@ -23,6 +23,7 @@
         app:startIconDrawable="@drawable/ic_exit">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/SearchText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Search Here..."
