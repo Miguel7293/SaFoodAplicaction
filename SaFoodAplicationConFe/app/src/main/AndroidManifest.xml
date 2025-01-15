@@ -16,6 +16,10 @@
         android:theme="@style/Theme.SaFoodAplication"
         tools:targetApi="31">
         <activity
+            android:name=".lobyActivity"
+            android:exported="false" />
+
+        <activity
             android:name=".RegisterActivity"
             android:exported="false" />
 

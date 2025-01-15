@@ -10,4 +10,6 @@
     <color name="search_color">#5D6470</color>
     <color name="restaurant_perfil_defult">#F8FAFD</color>
     <color name="backgraung_icon">#807EF5</color>
+    <color name="line_of_divider">#A7B0C0</color>
+
 </resources>
