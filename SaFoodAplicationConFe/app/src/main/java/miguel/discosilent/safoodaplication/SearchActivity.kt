@@ -11,8 +11,9 @@ import com.google.android.material.textfield.TextInputEditText
 
 class SearchActivity : AppCompatActivity() {
 
-    private val restaurant = RestaurantProvider.restaurants
+    private var restaurant = RestaurantProvider.restaurants
     private lateinit var textSearch: TextInputEditText
+    private lateinit var adapter: RestAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -25,7 +26,8 @@ class SearchActivity : AppCompatActivity() {
 
 
         textSearch.addTextChangedListener { reference ->
-            val restaurantFiltered = restaurant.filter { it.name.contains(reference.toString()) }
+            var restaurantFiltered = restaurant.filter { it.name.lowercase().contains(reference.toString().lowercase()) }
+            adapter.restUpdater(restaurantFiltered)
         }
 
         initRecycler()
@@ -33,7 +35,7 @@ class SearchActivity : AppCompatActivity() {
 
     private fun initRecycler() {
         val recyclerView = findViewById<RecyclerView>(R.id.list_searched)
-        val adapter = RestAdapter(restaurant)
+        adapter = RestAdapter(restaurant)
         recyclerView.layoutManager = LinearLayoutManager(this)
         recyclerView.adapter = adapter
     }
