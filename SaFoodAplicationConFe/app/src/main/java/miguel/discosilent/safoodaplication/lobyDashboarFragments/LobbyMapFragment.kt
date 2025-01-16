@@ -2,7 +2,9 @@ package miguel.discosilent.safoodaplication.lobyDashboarFragments
 
 import android.Manifest
 import android.content.pm.PackageManager
+import android.content.res.Resources
 import android.os.Bundle
+import android.util.Log
 import android.widget.Toast
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
@@ -11,6 +13,7 @@ import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.LatLng
+import com.google.android.gms.maps.model.MapStyleOptions
 import com.google.android.gms.maps.model.MarkerOptions
 import miguel.discosilent.safoodaplication.Place
 import miguel.discosilent.safoodaplication.R
@@ -64,6 +67,7 @@ class LobbyMapFragment : Fragment(), OnMapReadyCallback {
         this.map = googleMap
         createMarkers(places)
         enableLocation()
+        setCustomMapStyle()
     }
 
     // Crear los marcadores en el mapa
@@ -123,6 +127,24 @@ class LobbyMapFragment : Fragment(), OnMapReadyCallback {
                     Toast.LENGTH_SHORT
                 ).show()
             }
+        }
+    }
+
+
+    private fun setCustomMapStyle() {
+        try {
+            // Carga el estilo desde el archivo JSON
+            val success = map.setMapStyle(
+                MapStyleOptions.loadRawResourceStyle(
+                    requireContext(),
+                    R.raw.map_style
+                )
+            )
+            if (!success) {
+                Log.e("MapStyle", "Error al aplicar el estilo del mapa.")
+            }
+        } catch (e: Resources.NotFoundException) {
+            Log.e("MapStyle", "No se encontró el estilo del mapa. Error: ", e)
         }
     }
 }
