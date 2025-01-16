@@ -1,5 +1,6 @@
 package miguel.discosilent.safoodaplication.lobyDashboarFragments
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -9,6 +10,8 @@ import android.view.ViewGroup
 import android.widget.EditText
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.textfield.TextInputEditText
+import com.google.android.material.textfield.TextInputLayout
 import miguel.discosilent.safoodaplication.MainGridAdapter
 import miguel.discosilent.safoodaplication.R
 import miguel.discosilent.safoodaplication.RestaurantProvider
@@ -32,6 +35,7 @@ class LobbyListFragment : Fragment() {
         }
     }
 
+    @SuppressLint("ClickableViewAccessibility")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
@@ -50,16 +54,14 @@ class LobbyListFragment : Fragment() {
 
 
 
-        // Encuentra el Edit Text por ID
-        val searchText: EditText = view.findViewById(R.id.editTextSearch)
 
+        val searchEditText: TextInputEditText = view.findViewById(R.id.editTextSearch)
 
-        // Configura el click listener para abrir SearchActivity
-        searchText.setOnClickListener {
+        searchEditText.setOnTouchListener { _, _ ->
             val intent = Intent(requireContext(), SearchActivity::class.java)
             startActivity(intent)
-            // Aplica la transición suave
             requireActivity().overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out)
+            true // Retorna true para consumir el evento y evitar que se abra el teclado
         }
     }
 

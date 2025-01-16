@@ -21,7 +21,8 @@
 
         <activity
             android:name=".SearchActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:launchMode="singleTask"/>
 
         <activity
             android:name=".RegisterActivity"
