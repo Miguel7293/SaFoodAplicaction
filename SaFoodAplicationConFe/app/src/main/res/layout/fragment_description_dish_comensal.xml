@@ -105,7 +105,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Ordenar"
+            android:text="Ir a restaurat"
             android:backgroundTint="#388E3C"
             android:textColor="@android:color/white"/>
     </LinearLayout>

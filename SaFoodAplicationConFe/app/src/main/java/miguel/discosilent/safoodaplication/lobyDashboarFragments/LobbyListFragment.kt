@@ -16,6 +16,7 @@ import miguel.discosilent.safoodaplication.MainGridAdapter
 import miguel.discosilent.safoodaplication.R
 import miguel.discosilent.safoodaplication.DataProviders.Restaurant
 import miguel.discosilent.safoodaplication.DataProviders.RestaurantProvider
+import miguel.discosilent.safoodaplication.RestAdapter
 import miguel.discosilent.safoodaplication.SearchActivity
 import miguel.discosilent.safoodaplication.lobyOwnerFragments.DescriptionOfPlateFragment
 
@@ -57,6 +58,13 @@ class LobbyListFragment : Fragment() {
         }
         recommendationsRecyclerView.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
         recommendationsRecyclerView.adapter = recommendationsAdapter
+
+
+        val cercanosRecyclerView = view.findViewById<RecyclerView>(R.id.Rest_recycler_view)
+        val cercanosAdapter = RestAdapter(restaurant)
+        cercanosRecyclerView.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
+        cercanosRecyclerView.adapter = cercanosAdapter
+        
 
         // Configura el campo de búsqueda
         val searchEditText: TextInputEditText = view.findViewById(R.id.editTextSearch)
