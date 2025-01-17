@@ -126,9 +126,10 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler_reviews"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="250dp"
         android:layout_marginTop="16dp"
-        android:scrollbars="vertical" />
+        android:scrollbars="vertical"
+        tools:listitem="@layout/item_review" />
 
     <Button
         android:id="@+id/btn_write_review"
