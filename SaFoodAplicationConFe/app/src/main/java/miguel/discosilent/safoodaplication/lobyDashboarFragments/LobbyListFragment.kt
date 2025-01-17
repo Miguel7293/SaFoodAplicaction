@@ -10,9 +10,11 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.textfield.TextInputEditText
+import miguel.discosilent.safoodaplication.DataProviders.Dish
+import miguel.discosilent.safoodaplication.DataProviders.DishProvider
 import miguel.discosilent.safoodaplication.MainGridAdapter
 import miguel.discosilent.safoodaplication.R
-import miguel.discosilent.safoodaplication.Restaurant
+import miguel.discosilent.safoodaplication.DataProviders.Restaurant
 import miguel.discosilent.safoodaplication.DataProviders.RestaurantProvider
 import miguel.discosilent.safoodaplication.SearchActivity
 import miguel.discosilent.safoodaplication.lobyOwnerFragments.DescriptionOfPlateFragment
@@ -21,6 +23,8 @@ import miguel.discosilent.safoodaplication.lobyOwnerFragments.DescriptionOfPlate
 private const val ARG_PARAM1 = "param1"
 private const val ARG_PARAM2 = "param2"
 private val restaurant = RestaurantProvider.restaurants
+
+private val dish = DishProvider.dishes
 
 
 class LobbyListFragment : Fragment() {
@@ -42,16 +46,16 @@ class LobbyListFragment : Fragment() {
 
         // Configura el RecyclerView para Hot Deals
         val hotDealsRecyclerView = view.findViewById<RecyclerView>(R.id.hot_deals_recycler_view)
-        val hotDealsAdapter = MainGridAdapter(restaurant) { selectedRestaurant ->
-            navigateToDescription(selectedRestaurant)
+        val hotDealsAdapter = MainGridAdapter(dish) { selectedRestaurant ->
+            navigateToDishDescription(selectedRestaurant)
         }
         hotDealsRecyclerView.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
         hotDealsRecyclerView.adapter = hotDealsAdapter
 
         // Configura el RecyclerView para Recommendations
         val recommendationsRecyclerView = view.findViewById<RecyclerView>(R.id.recommendations_recycler_view)
-        val recommendationsAdapter = MainGridAdapter(restaurant) { selectedRestaurant ->
-            navigateToDescription(selectedRestaurant)
+        val recommendationsAdapter = MainGridAdapter(dish) { selectedRestaurant ->
+            navigateToDishDescription(selectedRestaurant)
         }
         recommendationsRecyclerView.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
         recommendationsRecyclerView.adapter = recommendationsAdapter
@@ -74,6 +78,16 @@ class LobbyListFragment : Fragment() {
             .addToBackStack(null)
             .commit()
     }
+
+    private fun navigateToDishDescription(dish: Dish) {
+        // Navega al fragmento DescriptionOfPlateFragment con los datos del plato
+        val fragment = DescriptionOfPlateFragment.newInstance(dish.name, dish.image)
+        parentFragmentManager.beginTransaction()
+            .replace(R.id.fragment_container, fragment)
+            .addToBackStack(null)
+            .commit()
+    }
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,

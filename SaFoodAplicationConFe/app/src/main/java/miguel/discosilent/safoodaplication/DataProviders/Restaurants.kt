@@ -1,4 +1,4 @@
-package miguel.discosilent.safoodaplication
+package miguel.discosilent.safoodaplication.DataProviders
 
 data class Restaurant(
     val name: String,

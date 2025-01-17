@@ -7,6 +7,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.squareup.picasso.Picasso
+import miguel.discosilent.safoodaplication.DataProviders.Restaurant
 
 class RestAdapter(var restaurants: List<Restaurant>) :
     RecyclerView.Adapter<RestAdapter.RestViewHolder>() {
