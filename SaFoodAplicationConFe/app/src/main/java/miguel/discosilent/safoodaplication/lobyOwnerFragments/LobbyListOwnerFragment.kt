@@ -10,7 +10,7 @@ import androidx.recyclerview.widget.RecyclerView
 import miguel.discosilent.safoodaplication.MainGridAdapter
 import miguel.discosilent.safoodaplication.R
 import miguel.discosilent.safoodaplication.Restaurant
-import miguel.discosilent.safoodaplication.RestaurantProvider
+import miguel.discosilent.safoodaplication.DataProviders.RestaurantProvider
 
 private const val ARG_PARAM1 = "param1"
 private const val ARG_PARAM2 = "param2"

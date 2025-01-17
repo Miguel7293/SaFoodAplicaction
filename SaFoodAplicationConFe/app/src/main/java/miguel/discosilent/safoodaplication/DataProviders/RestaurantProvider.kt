@@ -1,4 +1,6 @@
-package miguel.discosilent.safoodaplication
+package miguel.discosilent.safoodaplication.DataProviders
+
+import miguel.discosilent.safoodaplication.Restaurant
 
 class RestaurantProvider {
     companion object{

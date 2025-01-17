@@ -7,15 +7,13 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.EditText
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.textfield.TextInputEditText
-import com.google.android.material.textfield.TextInputLayout
 import miguel.discosilent.safoodaplication.MainGridAdapter
 import miguel.discosilent.safoodaplication.R
 import miguel.discosilent.safoodaplication.Restaurant
-import miguel.discosilent.safoodaplication.RestaurantProvider
+import miguel.discosilent.safoodaplication.DataProviders.RestaurantProvider
 import miguel.discosilent.safoodaplication.SearchActivity
 import miguel.discosilent.safoodaplication.lobyOwnerFragments.DescriptionOfPlateFragment
 
