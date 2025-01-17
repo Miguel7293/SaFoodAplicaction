@@ -1,49 +1,113 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".lobyDashboarFragments.DescriptionDishFragmentComensal">
+    android:orientation="vertical"
+    android:background="#F5F5F5"
+    android:padding="16dp"
+    tools:context=".lobyDashboarFragments.DescriptionOfPlateFragmentComensal">
+
+    <ImageView
+        android:id="@+id/image_dish"
+        android:layout_width="match_parent"
+        android:layout_height="250dp"
+        android:scaleType="centerCrop"
+        android:background="@android:color/darker_gray"
+        android:layout_marginBottom="16dp"/>
 
     <TextView
         android:id="@+id/text_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Nombre del plato"
         android:textSize="24sp"
         android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:textColor="#2E7D32"
+        android:text="Nombre del Plato"/>
 
     <TextView
         android:id="@+id/text_category"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Categoría"
-        android:textSize="18sp"
-        app:layout_constraintTop_toBottomOf="@id/text_description"
-        app:layout_constraintEnd_toEndOf="parent"/>
+        android:textSize="16sp"
+        android:textColor="#4CAF50"
+        android:text="Categoría"/>
 
     <TextView
         android:id="@+id/text_description"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="14sp"
+        android:textColor="#616161"
+        android:paddingTop="8dp"
+        android:text="Descripción del plato"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingTop="8dp">
+
+        <TextView
+            android:id="@+id/text_location"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="📍 Ubicación"
+            android:textColor="#388E3C"/>
+
+        <TextView
+            android:id="@+id/text_calories"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="🔥 580 Kcal"
+            android:textColor="#388E3C"/>
+
+        <TextView
+            android:id="@+id/text_time"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="⏳ 25 min"
+            android:textColor="#388E3C"/>
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/text_price"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Descripción del plato"
-        android:textSize="16sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/image_dish" />
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:textColor="#2E7D32"
+        android:paddingTop="8dp"
+        android:text="$75.00"/>
 
-    <ImageView
-        android:id="@+id/image_dish"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:scaleType="centerCrop"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/text_name" />
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:paddingTop="16dp">
 
+        <Button
+            android:id="@+id/btn_add_to_cart"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Añadir al carrito"
+            android:backgroundTint="#66BB6A"
+            android:textColor="@android:color/white"/>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <Button
+            android:id="@+id/btn_order"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Ordenar"
+            android:backgroundTint="#388E3C"
+            android:textColor="@android:color/white"/>
+    </LinearLayout>
+
+</LinearLayout>
