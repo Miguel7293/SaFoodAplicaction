@@ -64,7 +64,7 @@ class LobbyListFragment : Fragment() {
         val cercanosAdapter = RestAdapter(restaurant)
         cercanosRecyclerView.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
         cercanosRecyclerView.adapter = cercanosAdapter
-        
+
 
         // Configura el campo de búsqueda
         val searchEditText: TextInputEditText = view.findViewById(R.id.editTextSearch)

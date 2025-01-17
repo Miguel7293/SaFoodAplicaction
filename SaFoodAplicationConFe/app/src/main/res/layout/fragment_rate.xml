@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@color/white"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Customer Feedback"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:layout_gravity="center"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="Overall Rating"
+        android:textColor="@color/black"
+        android:textSize="16sp"
+        android:layout_gravity="center"/>
+
+    <TextView
+        android:id="@+id/text_rating"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:text="2.5"
+        android:textColor="@color/black"
+        android:textSize="60sp"
+        android:textStyle="bold"
+        android:layout_gravity="center"/>
+
+    <RatingBar
+        android:id="@+id/rating_bar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:isIndicator="true"
+        android:numStars="5"
+        android:rating="2.5"
+        android:stepSize="0.1"
+        android:progressTint="@color/star_yellow"
+        android:progressBackgroundTint="@color/gray_dark"
+        android:secondaryProgressTint="@color/star_yellow"
+        android:layout_gravity="center"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:text="Based on 20 reviews"
+        android:textColor="@color/gray_dark"
+        android:textSize="14sp"
+        android:layout_gravity="center"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Excellent"
+            android:textColor="@color/black" />
+
+        <ProgressBar
+            android:id="@+id/progressBarExellent"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="match_parent"
+            tools:progress="50"
+            android:layout_height="10dp"
+            android:progressDrawable="@drawable/progress_bar_green" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Good"
+            android:textColor="@color/black" />
+
+        <ProgressBar
+            android:id="@+id/progressBarGood"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="match_parent"
+            tools:progress="50"
+            android:layout_height="10dp"
+            android:progressDrawable="@drawable/progress_bar_green" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Average"
+            android:textColor="@color/black" />
+
+        <ProgressBar
+            android:id="@+id/progressBarAverage"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="match_parent"
+            tools:progress="50"
+            android:layout_height="10dp"
+            android:progressDrawable="@drawable/progress_bar_green" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Poor"
+            android:textColor="@color/black" />
+
+        <ProgressBar
+            android:id="@+id/progressBarPoor"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="match_parent"
+            tools:progress="50"
+            android:layout_height="10dp"
+            android:progressDrawable="@drawable/progress_bar_green" />
+
+    </LinearLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler_reviews"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:scrollbars="vertical" />
+
+    <Button
+        android:id="@+id/btn_write_review"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:backgroundTint="@color/green"
+        android:padding="12dp"
+        android:text="Write a review"
+        android:textColor="@color/white" />
+</LinearLayout>
