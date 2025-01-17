@@ -19,13 +19,11 @@ import miguel.discosilent.safoodaplication.DataProviders.RestaurantProvider
 import miguel.discosilent.safoodaplication.SearchActivity
 import miguel.discosilent.safoodaplication.lobyOwnerFragments.DescriptionOfPlateFragment
 
-
 private const val ARG_PARAM1 = "param1"
 private const val ARG_PARAM2 = "param2"
 private val restaurant = RestaurantProvider.restaurants
 
 private val dish = DishProvider.dishes
-
 
 class LobbyListFragment : Fragment() {
 
@@ -46,16 +44,16 @@ class LobbyListFragment : Fragment() {
 
         // Configura el RecyclerView para Hot Deals
         val hotDealsRecyclerView = view.findViewById<RecyclerView>(R.id.hot_deals_recycler_view)
-        val hotDealsAdapter = MainGridAdapter(dish) { selectedRestaurant ->
-            navigateToDishDescription(selectedRestaurant)
+        val hotDealsAdapter = MainGridAdapter(dish) { selectedDish ->
+            navigateToDishDescription(selectedDish)
         }
         hotDealsRecyclerView.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
         hotDealsRecyclerView.adapter = hotDealsAdapter
 
         // Configura el RecyclerView para Recommendations
         val recommendationsRecyclerView = view.findViewById<RecyclerView>(R.id.recommendations_recycler_view)
-        val recommendationsAdapter = MainGridAdapter(dish) { selectedRestaurant ->
-            navigateToDishDescription(selectedRestaurant)
+        val recommendationsAdapter = MainGridAdapter(dish) { selectedDish ->
+            navigateToDishDescription(selectedDish)
         }
         recommendationsRecyclerView.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
         recommendationsRecyclerView.adapter = recommendationsAdapter
@@ -70,24 +68,19 @@ class LobbyListFragment : Fragment() {
         }
     }
 
-    private fun navigateToDescription(restaurant: Restaurant) {
-        // Navega al fragmento DescriptionOfPlateFragment
-        val fragment = DescriptionOfPlateFragment.newInstance(restaurant.name, restaurant.image_of_rest)
-        parentFragmentManager.beginTransaction()
-            .replace(R.id.fragment_container, fragment)
-            .addToBackStack(null)
-            .commit()
-    }
-
     private fun navigateToDishDescription(dish: Dish) {
-        // Navega al fragmento DescriptionOfPlateFragment con los datos del plato
-        val fragment = DescriptionOfPlateFragment.newInstance(dish.name, dish.image)
+        val fragment = DescriptionOfPlateFragmentComensal.newInstance(
+            dish.name,
+            dish.image,
+            dish.category,
+            dish.description
+        )
+
         parentFragmentManager.beginTransaction()
             .replace(R.id.fragment_container, fragment)
             .addToBackStack(null)
             .commit()
     }
-
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
