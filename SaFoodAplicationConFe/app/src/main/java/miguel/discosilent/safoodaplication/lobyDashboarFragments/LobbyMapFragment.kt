@@ -27,7 +27,6 @@ class LobbyMapFragment : Fragment(), OnMapReadyCallback {
         private const val ARG_PARAM1 = "param1"
         private const val ARG_PARAM2 = "param2"
 
-        // Método para crear una nueva instancia del fragmento con parámetros
         @JvmStatic
         fun newInstance(param1: String, param2: String) =
             LobbyMapFragment().apply {
@@ -51,7 +50,6 @@ class LobbyMapFragment : Fragment(), OnMapReadyCallback {
         return view
     }
 
-    // Método para crear el fragmento de mapa
     private fun createFragment() {
         val mapFragment = childFragmentManager.findFragmentById(R.id.map) as SupportMapFragment?
             ?: SupportMapFragment.newInstance().also {
@@ -62,7 +60,6 @@ class LobbyMapFragment : Fragment(), OnMapReadyCallback {
         mapFragment.getMapAsync(this)
     }
 
-    // Callback cuando el mapa está listo
     override fun onMapReady(googleMap: GoogleMap) {
         this.map = googleMap
         createMarkers(places)
@@ -70,7 +67,6 @@ class LobbyMapFragment : Fragment(), OnMapReadyCallback {
         setCustomMapStyle()
     }
 
-    // Crear los marcadores en el mapa
     private fun createMarkers(places: List<Place>) {
         for (place in places) {
             val location = LatLng(place.latitude, place.longitude)
@@ -78,13 +74,11 @@ class LobbyMapFragment : Fragment(), OnMapReadyCallback {
         }
     }
 
-    // Comprobar si se tiene permiso de ubicación
     private fun isLocationPermissionGranted(): Boolean = ContextCompat.checkSelfPermission(
         requireContext(),
         Manifest.permission.ACCESS_FINE_LOCATION
     ) == PackageManager.PERMISSION_GRANTED
 
-    // Habilitar la ubicación en el mapa si el permiso es concedido
     private fun enableLocation() {
         if (!::map.isInitialized) return
         if (isLocationPermissionGranted()) {
@@ -94,7 +88,6 @@ class LobbyMapFragment : Fragment(), OnMapReadyCallback {
         }
     }
 
-    // Solicitar permiso de ubicación si no está concedido
     private fun requestLocationPermission() {
         if (ActivityCompat.shouldShowRequestPermissionRationale(
                 requireActivity(),
@@ -133,7 +126,6 @@ class LobbyMapFragment : Fragment(), OnMapReadyCallback {
 
     private fun setCustomMapStyle() {
         try {
-            // Carga el estilo desde el archivo JSON
             val success = map.setMapStyle(
                 MapStyleOptions.loadRawResourceStyle(
                     requireContext(),
@@ -148,3 +140,4 @@ class LobbyMapFragment : Fragment(), OnMapReadyCallback {
         }
     }
 }
+

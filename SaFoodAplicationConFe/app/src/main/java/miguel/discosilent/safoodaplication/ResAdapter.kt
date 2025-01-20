@@ -14,7 +14,7 @@ class RestAdapter(var restaurants: List<Restaurant>) :
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RestViewHolder {
         val layoutInflater = LayoutInflater.from(parent.context)
-        return RestViewHolder(layoutInflater.inflate(R.layout.item_search, parent, false))
+        return RestViewHolder(layoutInflater.inflate(R.layout.item_res_main, parent, false))
     }
 
     override fun getItemCount(): Int = restaurants.size

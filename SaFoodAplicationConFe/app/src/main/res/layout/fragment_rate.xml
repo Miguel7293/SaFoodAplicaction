@@ -89,7 +89,7 @@
             android:id="@+id/progressBarGood"
             style="?android:attr/progressBarStyleHorizontal"
             android:layout_width="match_parent"
-            tools:progress="50"
+            tools:progress="20"
             android:layout_height="10dp"
             android:progressDrawable="@drawable/progress_bar_green" />
 
@@ -103,7 +103,7 @@
             android:id="@+id/progressBarAverage"
             style="?android:attr/progressBarStyleHorizontal"
             android:layout_width="match_parent"
-            tools:progress="50"
+            tools:progress="10"
             android:layout_height="10dp"
             android:progressDrawable="@drawable/progress_bar_green" />
 
@@ -117,7 +117,7 @@
             android:id="@+id/progressBarPoor"
             style="?android:attr/progressBarStyleHorizontal"
             android:layout_width="match_parent"
-            tools:progress="50"
+            tools:progress="20"
             android:layout_height="10dp"
             android:progressDrawable="@drawable/progress_bar_green" />
 

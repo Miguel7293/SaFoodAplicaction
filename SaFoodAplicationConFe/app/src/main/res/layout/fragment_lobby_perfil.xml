@@ -4,57 +4,58 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/white"
     tools:context=".lobyDashboarFragments.LobbyPerfilFragment">
 
     <LinearLayout
         android:id="@+id/profile_header"
         android:layout_width="match_parent"
         android:layout_height="250dp"
-        android:orientation="vertical"
-        android:gravity="center"
         android:background="@drawable/gradient_background"
+        android:gravity="center"
+        android:orientation="vertical"
         app:layout_constraintTop_toTopOf="parent">
 
         <ImageView
             android:id="@+id/profile_image"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:src="@drawable/ic_google"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:layout_gravity="center"
             android:scaleType="centerCrop"
-            android:layout_gravity="center" />
+            android:src="@drawable/ic_google" />
 
         <TextView
             android:id="@+id/username"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="SA_Foods"
-            android:textSize="18sp"
-            android:textColor="@android:color/white"
-            android:textStyle="bold"
             android:layout_gravity="center"
-            android:paddingTop="8dp" />
+            android:paddingTop="8dp"
+            android:text="@string/app_name"
+            android:textColor="@android:color/white"
+            android:textSize="20sp"
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/email"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="center"
             android:text="SA_Company"
-            android:textSize="14sp"
             android:textColor="@android:color/white"
-            android:layout_gravity="center" />
+            android:textSize="14sp" />
     </LinearLayout>
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/back_button"
         android:layout_width="200dp"
         android:layout_height="50dp"
+        android:layout_marginTop="-25dp"
+        android:background="@drawable/button_background"
         android:text="Settings"
         android:textColor="@android:color/white"
-        android:background="@drawable/button_background"
-        android:layout_marginTop="-25dp"
-        app:layout_constraintTop_toBottomOf="@id/profile_header"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintTop_toBottomOf="@id/profile_header" />
 
     <androidx.cardview.widget.CardView
         android:id="@+id/account_info_card"
@@ -69,17 +70,18 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:padding="16dp">
+            android:padding="16dp"
+            android:background="@color/white">
 
             <TextView
                 android:id="@+id/account_info_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:paddingBottom="8dp"
                 android:text="Account Info"
-                android:textSize="18sp"
-                android:textStyle="bold"
                 android:textColor="@android:color/black"
-                android:paddingBottom="8dp" />
+                android:textSize="18sp"
+                android:textStyle="bold" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -90,29 +92,32 @@
                 <ImageView
                     android:layout_width="24dp"
                     android:layout_height="24dp"
-                    android:src="@drawable/ic_home" />
+                    android:src="@drawable/ic_home"
+                    app:tint="@color/backgraund_login" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
                     android:text="Name"
+                    android:textColor="@color/primary_text"
                     android:textSize="14sp"
-                    android:textStyle="bold"
-                    android:layout_marginStart="8dp" />
+                    android:textStyle="bold" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
                     android:text="SA_Food"
                     android:textSize="14sp"
-                    android:layout_marginStart="16dp" />
+                    android:textColor="@color/primary_text"/>
             </LinearLayout>
 
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
-                android:background="@android:color/darker_gray"
-                android:layout_marginVertical="8dp" />
+                android:layout_marginVertical="8dp"
+                android:background="@android:color/darker_gray" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -123,22 +128,26 @@
                 <ImageView
                     android:layout_width="24dp"
                     android:layout_height="24dp"
-                    android:src="@drawable/ic_map" />
+                    android:src="@drawable/ic_map"
+                    app:tint="@color/backgraund_login" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
                     android:text="Mobile"
                     android:textSize="14sp"
-                    android:textStyle="bold"
-                    android:layout_marginStart="8dp" />
+                    android:textColor="@color/primary_text"
+                    android:textStyle="bold" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="11dp"
                     android:text="999999999"
                     android:textSize="14sp"
-                    android:layout_marginStart="16dp" />
+                    android:textColor="@color/primary_text"
+                    />
             </LinearLayout>
         </LinearLayout>
     </androidx.cardview.widget.CardView>
