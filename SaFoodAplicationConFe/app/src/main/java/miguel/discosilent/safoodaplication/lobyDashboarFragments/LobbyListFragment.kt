@@ -18,7 +18,6 @@ import miguel.discosilent.safoodaplication.DataProviders.Restaurant
 import miguel.discosilent.safoodaplication.DataProviders.RestaurantProvider
 import miguel.discosilent.safoodaplication.RestAdapter
 import miguel.discosilent.safoodaplication.SearchActivity
-import miguel.discosilent.safoodaplication.lobyOwnerFragments.DescriptionOfPlateFragment
 
 private const val ARG_PARAM1 = "param1"
 private const val ARG_PARAM2 = "param2"
@@ -83,7 +82,6 @@ class LobbyListFragment : Fragment() {
             dish.category,
             dish.description
         )
-
         parentFragmentManager.beginTransaction()
             .replace(R.id.fragment_container, fragment)
             .addToBackStack(null)

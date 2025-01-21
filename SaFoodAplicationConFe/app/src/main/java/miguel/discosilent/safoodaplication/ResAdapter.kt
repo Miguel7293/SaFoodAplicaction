@@ -28,7 +28,6 @@ class RestAdapter(var restaurants: List<Restaurant>) :
         notifyDataSetChanged()
     }
 
-
     class RestViewHolder(val view: View) : RecyclerView.ViewHolder(view) {
         fun render(restaurant: Restaurant) {
             val horaryTextView = view.findViewById<TextView>(R.id.horary_res)
