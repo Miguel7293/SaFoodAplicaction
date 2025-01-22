@@ -49,4 +49,17 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
+
+
+
+
+    implementation ("com.squareup.retrofit2:retrofit:2.9.0")
+    implementation ("com.squareup.retrofit2:converter-gson:2.9.0")
+    implementation ("com.squareup.okhttp3:logging-interceptor:5.0.0-alpha.2")
+    implementation ("androidx.constraintlayout:constraintlayout:2.1.4")
+
+
+    implementation ("androidx.browser:browser:1.5.0")
+    implementation ("com.squareup.okhttp3:okhttp:4.11.0")
+
 }
