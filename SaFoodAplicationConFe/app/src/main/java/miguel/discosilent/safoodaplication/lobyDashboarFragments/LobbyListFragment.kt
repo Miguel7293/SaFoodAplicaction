@@ -10,11 +10,10 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.textfield.TextInputEditText
-import miguel.discosilent.safoodaplication.DataProviders.Dish
-import miguel.discosilent.safoodaplication.DataProviders.DishProvider
+import miguel.discosilent.safoodaplication.DataProviders.Plate
+import miguel.discosilent.safoodaplication.DataProviders.PlateProvider
 import miguel.discosilent.safoodaplication.MainGridAdapter
 import miguel.discosilent.safoodaplication.R
-import miguel.discosilent.safoodaplication.DataProviders.Restaurant
 import miguel.discosilent.safoodaplication.DataProviders.RestaurantProvider
 import miguel.discosilent.safoodaplication.RestAdapter
 import miguel.discosilent.safoodaplication.SearchActivity
@@ -23,7 +22,7 @@ private const val ARG_PARAM1 = "param1"
 private const val ARG_PARAM2 = "param2"
 private val restaurant = RestaurantProvider.restaurants
 
-private val dish = DishProvider.dishes
+private val dish = PlateProvider.plates
 
 class LobbyListFragment : Fragment() {
 
@@ -75,7 +74,7 @@ class LobbyListFragment : Fragment() {
         }
     }
 
-    private fun navigateToDishDescription(dish: Dish) {
+    private fun navigateToDishDescription(dish: Plate) {
         val fragment = DescriptionOfPlateFragmentComensal.newInstance(
             dish.name,
             dish.image,

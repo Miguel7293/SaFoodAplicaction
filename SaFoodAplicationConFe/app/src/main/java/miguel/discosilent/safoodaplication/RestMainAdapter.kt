@@ -7,11 +7,11 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.squareup.picasso.Picasso
-import miguel.discosilent.safoodaplication.DataProviders.Dish
+import miguel.discosilent.safoodaplication.DataProviders.Plate
 
 class MainGridAdapter(
-    private val dishes: List<Dish>,
-    private val onItemClick: (Dish) -> Unit
+    private val dishes: List<Plate>,
+    private val onItemClick: (Plate) -> Unit
 ) : RecyclerView.Adapter<MainGridAdapter.GridViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): GridViewHolder {
@@ -27,7 +27,7 @@ class MainGridAdapter(
     }
 
     class GridViewHolder(private val view: View) : RecyclerView.ViewHolder(view) {
-        fun render(dish: Dish, onItemClick: (Dish) -> Unit) {
+        fun render(dish: Plate, onItemClick: (Plate) -> Unit) {
             val imageView = view.findViewById<ImageView>(R.id.image_rest) // Cambia R.id.image_dish por el ID correcto
             val nameTextView = view.findViewById<TextView>(R.id.name_rest) // Cambia R.id.name_dish por el ID correcto
 

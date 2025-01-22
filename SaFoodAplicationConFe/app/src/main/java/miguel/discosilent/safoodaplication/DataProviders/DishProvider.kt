@@ -1,69 +1,107 @@
 package miguel.discosilent.safoodaplication.DataProviders
 
-import miguel.discosilent.safoodaplication.DataProviders.Dish
-
-class DishProvider {
+class PlateProvider {
     companion object {
-        val dishes = mutableListOf(
-            Dish(
+        val plates = mutableListOf(
+            Plate(
+                plate_id = 1,
                 name = "Ceviche",
+                description = "Plato a base de pescado crudo marinado en jugo de limón con ají y cebolla.",
+                price = 25.50,
+                available = true,
                 image = "https://www.lima2019.pe/sites/default/files/inline-images/preview-gallery-006_0.jpg",
-                category = "Mariscos",
-                description = "Plato a base de pescado crudo marinado en jugo de limón con ají y cebolla."
+                cart_id = 1,
+                category = "Mariscos"
             ),
-            Dish(
+            Plate(
+                plate_id = 2,
                 name = "Lomo Saltado",
+                description = "Salteado de lomo de res con cebolla, tomate y papas fritas, acompañado de arroz.",
+                price = 28.75,
+                available = true,
                 image = "https://www.lima2019.pe/sites/default/files/inline-images/preview-gallery-004_0.jpg",
-                category = "Carne",
-                description = "Salteado de lomo de res con cebolla, tomate y papas fritas, acompañado de arroz."
+                cart_id = 2,
+                category = "Carne"
             ),
-            Dish(
+            Plate(
+                plate_id = 3,
                 name = "Ají de Gallina",
+                description = "Guiso cremoso de gallina deshilachada con ají amarillo y especias.",
+                price = 22.00,
+                available = true,
                 image = "https://www.lima2019.pe/sites/default/files/inline-images/preview-gallery-005_0.jpg",
-                category = "Pollo",
-                description = "Guiso cremoso de gallina deshilachada con ají amarillo y especias."
+                cart_id = 3,
+                category = "Pollo"
             ),
-            Dish(
+            Plate(
+                plate_id = 4,
                 name = "Causa Limeña",
+                description = "Pastel frío de papa amarilla relleno con pollo, atún o mariscos.",
+                price = 15.50,
+                available = true,
                 image = "https://www.lima2019.pe/sites/default/files/inline-images/preview-gallery-008.jpg",
-                category = "Entrada",
-                description = "Pastel frío de papa amarilla relleno con pollo, atún o mariscos."
+                cart_id = 4,
+                category = "Entrada"
             ),
-            Dish(
+            Plate(
+                plate_id = 5,
                 name = "Pachamanca",
+                description = "Cocción de carnes y tubérculos en piedras calientes bajo tierra.",
+                price = 35.00,
+                available = false,
                 image = "https://www.lima2019.pe/sites/default/files/inline-images/preview-gallery-010.jpg",
-                category = "Tradicional",
-                description = "Cocción de carnes y tubérculos en piedras calientes bajo tierra."
+                cart_id = 5,
+                category = "Tradicional"
             ),
-            Dish(
+            Plate(
+                plate_id = 6,
                 name = "Arroz con Pollo",
+                description = "Plato de arroz cocido con culantro, acompañado con pollo y salsa criolla.",
+                price = 18.50,
+                available = true,
                 image = "https://www.lima2019.pe/sites/default/files/inline-images/preview-gallery-001.jpg",
-                category = "Arroz",
-                description = "Plato de arroz cocido con culantro, acompañado con pollo y salsa criolla."
+                cart_id = 6,
+                category = "Arroz"
             ),
-            Dish(
+            Plate(
+                plate_id = 7,
                 name = "Tallarines a la Huancaína",
+                description = "Tallarines servidos con salsa huancaína a base de ají amarillo y queso fresco.",
+                price = 20.00,
+                available = true,
                 image = "https://www.lima2019.pe/sites/default/files/inline-images/preview-gallery-009.jpg",
-                category = "Pasta",
-                description = "Tallarines servidos con salsa huancaína a base de ají amarillo y queso fresco."
+                cart_id = 7,
+                category = "Pasta"
             ),
-            Dish(
+            Plate(
+                plate_id = 8,
                 name = "Aguadito de Pollo",
+                description = "Sopa espesa de pollo con arroz y culantro, ideal para el invierno.",
+                price = 14.00,
+                available = true,
                 image = "https://www.lima2019.pe/sites/default/files/inline-images/preview-gallery-007.jpg",
-                category = "Sopa",
-                description = "Sopa espesa de pollo con arroz y culantro, ideal para el invierno."
+                cart_id = 8,
+                category = "Sopa"
             ),
-            Dish(
+            Plate(
+                plate_id = 9,
                 name = "Tacu Tacu",
+                description = "Mezcla de arroz y menestras sofrita en sartén, usualmente acompañado de carne.",
+                price = 18.00,
+                available = true,
                 image = "https://www.lima2019.pe/sites/default/files/inline-images/preview-gallery-002.jpg",
-                category = "Criollo",
-                description = "Mezcla de arroz y menestras sofrita en sartén, usualmente acompañado de carne."
+                cart_id = 9,
+                category = "Criollo"
             ),
-            Dish(
+            Plate(
+                plate_id = 10,
                 name = "Pollo a la Brasa",
+                description = "Pollo asado al carbón con papas fritas y ensalada.",
+                price = 24.00,
+                available = true,
                 image = "https://www.lima2019.pe/sites/default/files/inline-images/preview-gallery-003.jpg",
-                category = "Parrilla",
-                description = "Pollo asado al carbón con papas fritas y ensalada."
+                cart_id = 10,
+                category = "Parrilla"
             )
         )
     }

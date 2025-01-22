@@ -5,6 +5,7 @@ data class Plate(
     val name: String,
     val description: String,
     val price: Double,
+    val category: String,
     val available: Boolean,
     val image: String,
     val cart_id: Int

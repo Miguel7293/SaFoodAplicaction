@@ -9,15 +9,14 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import miguel.discosilent.safoodaplication.MainGridAdapter
 import miguel.discosilent.safoodaplication.R
-import miguel.discosilent.safoodaplication.DataProviders.Dish
-import miguel.discosilent.safoodaplication.DataProviders.DishProvider
-import miguel.discosilent.safoodaplication.lobyDashboarFragments.DescriptionOfPlateFragmentComensal
+import miguel.discosilent.safoodaplication.DataProviders.Plate
+import miguel.discosilent.safoodaplication.DataProviders.PlateProvider
 
 private const val ARG_PARAM1 = "param1"
 private const val ARG_PARAM2 = "param2"
 
 // Lista de platos cargada desde el proveedor
-private val dishList: List<Dish> = DishProvider.dishes ?: emptyList()
+private val dishList: List<Plate> = PlateProvider.plates ?: emptyList()
 
 class LobbyListOwnerFragment : Fragment() {
     private var param1: String? = null
@@ -70,7 +69,7 @@ class LobbyListOwnerFragment : Fragment() {
         }
     }
 
-    private fun navigateToDescription(dish: Dish) {
+    private fun navigateToDescription(dish: Plate) {
         val fragment =  DescriptionDishFragmentOwnerFragment.newInstance(
             dish.name,
             dish.image,
