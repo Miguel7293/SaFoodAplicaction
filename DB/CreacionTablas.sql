@@ -3,7 +3,7 @@ CREATE TABLE users (
     user_id SERIAL PRIMARY KEY,
     profile_image TEXT,
     email VARCHAR(100) UNIQUE NOT NULL,
-    token TEXT,
+    user_uid UUID, UNIQUE NOT NULL
     type_user VARCHAR(20) NOT NULL, -- Cliente o dueño
     username VARCHAR(50) NOT NULL,
     created_at TIMESTAMP DEFAULT NOW() -- Fecha de registro
