@@ -21,7 +21,7 @@ CREATE TABLE restaurants (
     category VARCHAR(50),
     description TEXT,
     state VARCHAR(20), -- Abierto o cerrado
-    id_dueno INT NOT NULL REFERENCES users(user_id), -- Relación con usuario dueño
+    id_dueno UUID NOT NULL REFERENCES users(user_uid), -- Relación con usuario dueño
     created_at TIMESTAMP DEFAULT NOW() -- Fecha de registro
 
 );
@@ -58,3 +58,31 @@ CREATE TABLE rates (
 
 
 ALTER TABLE rates ADD CONSTRAINT unique_user_restaurant_rate UNIQUE (user_restaurant, restaurant_id); --- un usuario pueda calificar un restaurante solo una vez
+
+
+
+
+
+
+
+
+
+
+INSERT INTO restaurants (
+    name, 
+    location, 
+    image_of_local, 
+    contact_number, 
+    horario, 
+    category, 
+    description, 
+    state, 
+    id_dueno, 
+    created_at,
+    coordinates
+) VALUES
+('Mayta Restaurant', 'Av. Pardo y Aliaga, Lima, Perú', 'https://elcomercio.pe/resizer/mrauq-1m2NOGbEMiCAlQGF42IT0=/1200x900/smart/filters:format(jpeg):quality(75)/cloudfront-us-east-1.images.arcpublishing.com/elcomercio/LIME7AFJ7BGSDINO4PPO4T4QGQ.jpg', '+51 123 456 789', '08:00 - 22:00', 'Italiana', 'Un restaurante italiano con una gran variedad de pastas y pizzas.', 'Abierto', '97806ace-eea2-4c16-97ec-7e76bd8a1f84', '2025-01-23 12:00:00', '-12.0464,-77.0334'),
+('Mantela Restaurant', 'Jirón de la Unión, Lima, Perú', 'https://dynamic-media-cdn.tripadvisor.com/media/photo-o/2d/29/28/66/bienvenido-a-mantela.jpg', '+51 987 654 321', '10:00 - 20:00', 'Mexicana', 'Disfruta de los mejores tacos, burritos y guacamole en un ambiente vibrante.', 'Abierto', '97806ace-eea2-4c16-97ec-7e76bd8a1f84', '2025-01-23 12:00:00', '-12.0455,-77.0328'),
+('Sessions Restaurant', 'Av. Pueyrredón, Buenos Aires, Argentina', 'https://dynamic-media-cdn.tripadvisor.com/media/photo-o/16/e2/dc/48/sessions-restaurant-acceso.jpg', '+54 11 2345 6789', '10:00 - 20:00', 'Francesa', 'Comida francesa gourmet con platos tradicionales y modernos.', 'Abierto', '97806ace-eea2-4c16-97ec-7e76bd8a1f84', '2025-01-23 12:00:00', '-34.6010,-58.3796'),
+('Panela Ajonjolí Restaurant', 'Calle Las Palmas, Bogotá, Colombia', 'https://dynamic-media-cdn.tripadvisor.com/media/photo-o/2d/da/f1/f0/panela-ajonjoli.jpg', '+57 1 987 654 321', '10:00 - 20:00', 'Marisquería', 'Ofrecemos lo mejor del mar con mariscos frescos y platos de la costa.', 'Cerrado', '97806ace-eea2-4c16-97ec-7e76bd8a1f84', '2025-01-23 12:00:00', '4.7114,-74.0705');
+

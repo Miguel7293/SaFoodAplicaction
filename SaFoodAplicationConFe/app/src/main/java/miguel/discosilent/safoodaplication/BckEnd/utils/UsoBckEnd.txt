@@ -1,0 +1,99 @@
+ejemplo de usos
+
+id usuario, devuelve todos los restaurantes
+        val restaurantRepository = RestaurantRepository()
+
+        restaurantRepository.fetchRestaurantsByOwner(
+            ownerId = "97806ace-eea2-4c16-97ec-7e76bd8a1f84", // UUID
+            onSuccess = { restaurants ->
+                // Loguea los restaurantes obtenidos
+                Log.d("RestaurantLog", "Restaurantes obtenidos: ${restaurants.size}")
+                restaurants.forEach { restaurant ->
+                    Log.d("RestaurantLog", "Nombre: ${restaurant.name}, Ubicación: ${restaurant.location}")
+                }
+            },
+            onError = { error ->
+                // Loguea cualquier error
+                Log.e("RestaurantLog", "Error al obtener los restaurantes: $error")
+            }
+        )
+
+
+id restaurante, devuelva todas las cartas
+
+        val cartaRepository = CartaRepository()
+
+        cartaRepository.fetchCartaByRestaurant("7",
+            onSuccess = { cartas ->
+                // Aquí obtienes la lista de cartas y puedes usarlas
+                Log.d("CartaLog", "Cartas obtenidas: $cartas")
+            },
+            onError = { errorMessage ->
+                // Aquí manejas el error
+                Log.e("CartaLog", "Error al obtener las cartas: $errorMessage")
+            }
+        )
+
+id carta, devuelva los platos
+
+        val plateRepository = PlateRepository()
+
+        plateRepository.fetchPlatesByCart("10",
+            onSuccess = { plates ->
+                // Aquí obtienes la lista de platos y puedes usarlos
+                Log.d("PlateLog", "Platos obtenidos: $plates")
+            },
+            onError = { errorMessage ->
+                // Aquí manejas el error
+                Log.e("PlateLog", "Error al obtener los platos: $errorMessage")
+            }
+        )
+
+id platos, devuelva datos del plato
+
+        val plateRepository = PlateRepository()
+
+        plateRepository.fetchPlateById("14", { plate ->
+            // Aquí tienes el plato que has solicitado, puedes acceder a sus propiedades
+            Log.d("PlateRepository", "Nombre del plato: ${plate.name}")
+            Log.d("PlateRepository", "Descripción: ${plate.description}")
+            Log.d("PlateRepository", "Precio: ${plate.price}")
+        }, { errorMessage ->
+            // Aquí manejas los errores
+            Log.e("PlateRepository", "Error: $errorMessage")
+        })
+
+id usuario, devuelve todas sus calificaciones de todos los restaurantes q el clifico
+
+        val rateRepository = RateRepository()
+
+        rateRepository.fetchRatesByUserId("97806ace-eea2-4c16-97ec-7e76bd8a1f84", { rates ->
+            // Aquí tienes las valoraciones que has solicitado para el usuario
+            Log.d("RateRepository", "Valoraciones obtenidas exitosamente para el usuario")
+            for (rate in rates) {
+                Log.d("RateRepository", "Puntaje: ${rate.points}, Descripción: ${rate.description}")
+            }
+        }, { errorMessage ->
+            // Aquí manejas los errores
+            Log.e("RateRepository", "Error: $errorMessage")
+        })
+
+
+id restaurante, devuelve todas las calificaciones al mismo
+
+
+
+id restaurante, devuelve información del restaurante
+
+
+        val restaurantRepository = RestaurantRepository()
+
+        restaurantRepository.fetchRestaurantById("8", { restaurant ->
+            // Aquí tienes la información del restaurante solicitado
+            Log.d("RestaurantRepository", "Nombre del restaurante: ${restaurant.name}")
+            Log.d("RestaurantRepository", "Descripción: ${restaurant.description}")
+            Log.d("RestaurantRepository", "Ubicación: ${restaurant.location}")
+        }, { errorMessage ->
+            // Aquí manejas los errores
+            Log.e("RestaurantRepository", "Error: $errorMessage")
+        })
