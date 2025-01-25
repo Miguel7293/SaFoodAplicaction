@@ -5,6 +5,10 @@ import miguel.discosilent.safoodaplication.BckEnd.data.models.Plate
 import miguel.discosilent.safoodaplication.BckEnd.data.models.Rate
 import miguel.discosilent.safoodaplication.BckEnd.data.models.Restaurant
 import miguel.discosilent.safoodaplication.BckEnd.data.models.User
+import miguel.discosilent.safoodaplication.BckEnd.data.modelsRequest.CartaRequest
+import miguel.discosilent.safoodaplication.BckEnd.data.modelsRequest.PlateRequest
+import miguel.discosilent.safoodaplication.BckEnd.data.modelsRequest.RateRequest
+import miguel.discosilent.safoodaplication.BckEnd.data.modelsRequest.RestaurantRequest
 import retrofit2.Call
 import retrofit2.http.*
 
@@ -59,4 +63,26 @@ interface ApiService {
         @Query("restaurant_id") restaurantId: String, // Filtra por el ID del restaurante
         @Query("select") select: String // Seleccionamos todos los campos
     ): Call<List<Rate>>
+
+
+    @POST("restaurants")
+    fun createRestaurant(
+        @Body restaurant: RestaurantRequest
+    ): Call<Void>
+
+    @POST("carta")
+    fun createCarta(
+        @Body carta: CartaRequest
+    ): Call<Void>
+
+    @POST("plates")
+    fun createPlate(
+        @Body plate: PlateRequest
+    ): Call<Void>
+
+    @POST("rates")
+    fun createRate(
+        @Body rate: RateRequest
+    ): Call<Void>
+
 }

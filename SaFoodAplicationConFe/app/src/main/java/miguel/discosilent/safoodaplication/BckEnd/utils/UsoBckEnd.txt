@@ -1,138 +1,201 @@
-ejemplo de usos
+// Configuración inicial para cargar y restaurar el token de autenticación
+Config.loadAuthToken(this); // Cargar el token almacenado previamente
+Config.restoreAuthToken(this); // Restaurar el token al predeterminado de la aplicacion 
 
-id usuario, devuelve todos los restaurantes
-        val restaurantRepository = RestaurantRepository()
+// Ejemplo de actualización del token de autenticación con un nuevo JWT
+String newJwtToken = "eyJhbGciOiJIUzI1NiIsImtpZCI6Ik5KaVlRN3JWR1pzZlhDekEiLCJ0eXAiOiJKV1QifQ..."
+Config.updateAuthToken(this, newJwtToken);
 
-        restaurantRepository.fetchRestaurantsByOwner(
-            ownerId = "97806ace-eea2-4c16-97ec-7e76bd8a1f84", // UUID
-            onSuccess = { restaurants ->
-                // Loguea los restaurantes obtenidos
-                Log.d("RestaurantLog", "Restaurantes obtenidos: ${restaurants.size}")
-                restaurants.forEach { restaurant ->
-                    Log.d("RestaurantLog", "Nombre: ${restaurant.name}, Ubicación: ${restaurant.location}")
-                }
-            },
-            onError = { error ->
-                // Loguea cualquier error
-                Log.e("RestaurantLog", "Error al obtener los restaurantes: $error")
-            }
-        )
+// Verificar que el token se haya actualizado correctamente
+String currentToken = Config.getAuthToken(this); // Recuperar el token actual
+System.out.println("Token actualizado: " + currentToken);
 
 
-id restaurante, devuelva todas las cartas
+// **Ejemplos de Uso para Obtener Datos desde el Backend**
 
-        val cartaRepository = CartaRepository()
+// 1. Obtener todos los restaurantes de un usuario
+val restaurantRepository = RestaurantRepository()
+restaurantRepository.fetchRestaurantsByOwner(
+    ownerId = "97806ace-eea2-4c16-97ec-7e76bd8a1f84", // UUID
+    onSuccess = { restaurants ->
+        Log.d("RestaurantLog", "Restaurantes obtenidos: ${restaurants.size}")
+        restaurants.forEach { restaurant ->
+            Log.d("RestaurantLog", "Nombre: ${restaurant.name}, Ubicación: ${restaurant.location}")
+        }
+    },
+    onError = { error ->
+        Log.e("RestaurantLog", "Error al obtener los restaurantes: $error")
+    }
+)
 
-        cartaRepository.fetchCartaByRestaurant("7",
-            onSuccess = { cartas ->
-                // Aquí obtienes la lista de cartas y puedes usarlas
-                Log.d("CartaLog", "Cartas obtenidas: $cartas")
-            },
-            onError = { errorMessage ->
-                // Aquí manejas el error
-                Log.e("CartaLog", "Error al obtener las cartas: $errorMessage")
-            }
-        )
+// 2. Obtener todas las cartas de un restaurante
+val cartaRepository = CartaRepository()
+cartaRepository.fetchCartaByRestaurant(
+    restaurantId = "7",
+    onSuccess = { cartas ->
+        Log.d("CartaLog", "Cartas obtenidas: $cartas")
+    },
+    onError = { errorMessage ->
+        Log.e("CartaLog", "Error al obtener las cartas: $errorMessage")
+    }
+)
 
-id carta, devuelva los platos
+// 3. Obtener los platos de una carta
+val plateRepository = PlateRepository()
+plateRepository.fetchPlatesByCart(
+    cartId = "10",
+    onSuccess = { plates ->
+        Log.d("PlateLog", "Platos obtenidos: $plates")
+    },
+    onError = { errorMessage ->
+        Log.e("PlateLog", "Error al obtener los platos: $errorMessage")
+    }
+)
 
-        val plateRepository = PlateRepository()
+// 4. Obtener información de un plato por su ID
+plateRepository.fetchPlateById(
+    plateId = "14",
+    onSuccess = { plate ->
+        Log.d("PlateRepository", "Nombre del plato: ${plate.name}")
+        Log.d("PlateRepository", "Descripción: ${plate.description}")
+        Log.d("PlateRepository", "Precio: ${plate.price}")
+    },
+    onError = { errorMessage ->
+        Log.e("PlateRepository", "Error: $errorMessage")
+    }
+)
 
-        plateRepository.fetchPlatesByCart("10",
-            onSuccess = { plates ->
-                // Aquí obtienes la lista de platos y puedes usarlos
-                Log.d("PlateLog", "Platos obtenidos: $plates")
-            },
-            onError = { errorMessage ->
-                // Aquí manejas el error
-                Log.e("PlateLog", "Error al obtener los platos: $errorMessage")
-            }
-        )
+// 5. Obtener todas las calificaciones de un usuario
+val rateRepository = RateRepository()
+rateRepository.fetchRatesByUserId(
+    userId = "97806ace-eea2-4c16-97ec-7e76bd8a1f84",
+    onSuccess = { rates ->
+        Log.d("RateRepository", "Valoraciones obtenidas exitosamente para el usuario")
+        rates.forEach { rate ->
+            Log.d("RateRepository", "Puntaje: ${rate.points}, Descripción: ${rate.description}")
+        }
+    },
+    onError = { errorMessage ->
+        Log.e("RateRepository", "Error: $errorMessage")
+    }
+)
 
-id platos, devuelva datos del plato
+// 6. Obtener información de un restaurante por su ID
+restaurantRepository.fetchRestaurantById(
+    restaurantId = "8",
+    onSuccess = { restaurant ->
+        Log.d("RestaurantRepository", "Nombre del restaurante: ${restaurant.name}")
+        Log.d("RestaurantRepository", "Descripción: ${restaurant.description}")
+        Log.d("RestaurantRepository", "Ubicación: ${restaurant.location}")
+    },
+    onError = { errorMessage ->
+        Log.e("RestaurantRepository", "Error: $errorMessage")
+    }
+)
 
-        val plateRepository = PlateRepository()
+// **Ejemplos para el Login**
 
-        plateRepository.fetchPlateById("14", { plate ->
-            // Aquí tienes el plato que has solicitado, puedes acceder a sus propiedades
-            Log.d("PlateRepository", "Nombre del plato: ${plate.name}")
-            Log.d("PlateRepository", "Descripción: ${plate.description}")
-            Log.d("PlateRepository", "Precio: ${plate.price}")
-        }, { errorMessage ->
-            // Aquí manejas los errores
-            Log.e("PlateRepository", "Error: $errorMessage")
-        })
+// 1. Obtener todos los usuarios
+val userRepository = UserRepository()
+userRepository.fetchUsers(
+    onSuccess = { users ->
+        users.forEach { user ->
+            Log.d("USER_DATA", "ID: ${user.user_uid}, Name: ${user.username}")
+        }
+    },
+    onError = { error ->
+        Toast.makeText(this, "Error: $error", Toast.LENGTH_LONG).show()
+        Log.d("USER_DATA", "Error: $error")
+    }
+)
 
-id usuario, devuelve todas sus calificaciones de todos los restaurantes q el clifico
+// 2. Crear un nuevo usuario
+val profileImage = "https://example.com/profile.jpg"
+val typeUser = "admin"
+val username = "newUser123"
+userRepository.createUser(
+    profileImage = profileImage,
+    typeUser = typeUser,
+    username = username,
+    onSuccess = { message ->
+        Toast.makeText(this, message, Toast.LENGTH_LONG).show()
+    },
+    onError = { error ->
+        Toast.makeText(this, error, Toast.LENGTH_LONG).show()
+    }
+)
 
-        val rateRepository = RateRepository()
+// **Ejemplos de Creación de Objetos**
 
-        rateRepository.fetchRatesByUserId("97806ace-eea2-4c16-97ec-7e76bd8a1f84", { rates ->
-            // Aquí tienes las valoraciones que has solicitado para el usuario
-            Log.d("RateRepository", "Valoraciones obtenidas exitosamente para el usuario")
-            for (rate in rates) {
-                Log.d("RateRepository", "Puntaje: ${rate.points}, Descripción: ${rate.description}")
-            }
-        }, { errorMessage ->
-            // Aquí manejas los errores
-            Log.e("RateRepository", "Error: $errorMessage")
-        })
+// 1. Crear un restaurante
+val newRestaurant = RestaurantRequest(
+    name = "Restaurante El Buen Sabor",
+    location = "Calle Ficticia 123, Ciudad Ejemplo",
+    image_of_local = "https://ejemplo.com/imagen_restaurante.jpg",
+    contact_number = "+34 123 456 789",
+    horario = "Lunes a Viernes, 9:00 AM - 10:00 PM",
+    category = "Restaurante",
+    description = "Un restaurante que ofrece comida tradicional con un toque moderno.",
+    state = "Activo",
+    coordinates = "40.7128, -74.0060"
+)
+restaurantRepository.createRestaurant(
+    newRestaurant,
+    onSuccess = {
+        Log.e("RestaurantLog", "Restaurante creado con éxito")
+    },
+    onError = { errorMessage ->
+        Log.e("RestaurantLog", "Error al crear restaurante: $errorMessage")
+    }
+)
 
+// 2. Crear una carta
+val cartaRequest = CartaRequest(
+    type = "Comida Mexicana",
+    description = "Ofrecemos una variedad de platillos tradicionales mexicanos, preparados con ingredientes frescos y de alta calidad.",
+    rest_cart = "15"
+)
+cartaRepository.createCarta(
+    cartaRequest,
+    onSuccess = {
+        println("Carta creada con éxito")
+    },
+    onError = { error ->
+        println("Error al crear la carta: $error")
+    }
+)
 
-id restaurante, devuelve todas las calificaciones al mismo
+// 3. Crear un plato
+val plateRequest = PlateRequest(
+    name = "Tacos al Pastor",
+    description = "Tacos tradicionales mexicanos con carne de cerdo marinada y servidos con piña, cebolla y cilantro.",
+    price = 50.00,
+    available = true,
+    image = "https://ejemplo.com/tacos_al_pastor.jpg",
+    cart_id = "12"
+)
+plateRepository.createPlate(
+    plateRequest,
+    onSuccess = {
+        println("Plato creado con éxito")
+    },
+    onError = { error ->
+        println("Error al crear el plato: $error")
+    }
+)
 
-
-
-id restaurante, devuelve información del restaurante
-
-
-        val restaurantRepository = RestaurantRepository()
-
-        restaurantRepository.fetchRestaurantById("8", { restaurant ->
-            // Aquí tienes la información del restaurante solicitado
-            Log.d("RestaurantRepository", "Nombre del restaurante: ${restaurant.name}")
-            Log.d("RestaurantRepository", "Descripción: ${restaurant.description}")
-            Log.d("RestaurantRepository", "Ubicación: ${restaurant.location}")
-        }, { errorMessage ->
-            // Aquí manejas los errores
-            Log.e("RestaurantRepository", "Error: $errorMessage")
-        })
-
-
-
-
-
-EJEMPLOS PARA EL LOGIN
-
-        val userRepository = UserRepository()
-
-        userRepository.fetchUsers(
-            onSuccess = { users: List<User> ->
-                // Imprimir en Log para verificar los usuarios
-                for (user in users) {
-                    Log.d("USER_DATA", "ID: ${user.user_uid}, Name: ${user.username}")
-                }
-                // Aquí podrías enviar la lista a un RecyclerView u otra lógica
-            },
-            onError = { error ->
-                Toast.makeText(this, "Error: $error", Toast.LENGTH_LONG).show()
-                Log.d("USER_DATA", "Error: $error")
-            }
-        )
-
-        val profileImage = "https://example.com/profile.jpg"
-        val typeUser = "admin"
-        val username = "newUser123"
-
-        // Llama a la función para crear el usuario
-        userRepository.createUser(profileImage, typeUser, username,
-            onSuccess = { message ->
-                // Usuario creado exitosamente
-                Toast.makeText(this, message, Toast.LENGTH_LONG).show()
-            },
-            onError = { error ->
-                // Error al crear el usuario
-                Toast.makeText(this, error, Toast.LENGTH_LONG).show()
-            }
-        )
-
+// 4. Crear una calificación (Rate)
+val rateRequest = RateRequest(
+    points = 3,
+    description = "Puntos acumulados por la compra de platillos en el restaurante. Pueden canjearse por descuentos o productos gratis.",
+    restaurant_id = "14"
+)
+rateRepository.createRate(
+    rateRequest,
+    onSuccess = {
+        println("Rate creado con éxito")
+    },
+    onError = { error ->
+        println("Error al crear el rate: $error")
+    }
+)

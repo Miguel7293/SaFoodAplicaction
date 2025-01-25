@@ -1,6 +1,7 @@
 package miguel.discosilent.safoodaplication.BckEnd.repository
 
 import miguel.discosilent.safoodaplication.BckEnd.data.models.Rate
+import miguel.discosilent.safoodaplication.BckEnd.data.modelsRequest.RateRequest
 import miguel.discosilent.safoodaplication.BckEnd.data.remote.ApiClient
 import miguel.discosilent.safoodaplication.BckEnd.data.remote.ApiService
 import retrofit2.Call
@@ -62,6 +63,26 @@ class RateRepository {
 
             override fun onFailure(call: Call<List<Rate>>, t: Throwable) {
                 onError("Excepción: ${t.message}")
+            }
+        })
+    }
+
+    fun createRate(
+        rateRequest: RateRequest,
+        onSuccess: () -> Unit,
+        onError: (String) -> Unit
+    ) {
+        apiService.createRate(rateRequest).enqueue(object : Callback<Void> {
+            override fun onResponse(call: Call<Void>, response: Response<Void>) {
+                if (response.isSuccessful) {
+                    onSuccess() // Llama al callback de éxito
+                } else {
+                    onError("Error al crear rate: ${response.code()} - ${response.message()}")
+                }
+            }
+
+            override fun onFailure(call: Call<Void>, t: Throwable) {
+                onError("Excepción al realizar la solicitud: ${t.message}")
             }
         })
     }
