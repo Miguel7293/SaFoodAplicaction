@@ -97,3 +97,42 @@ id restaurante, devuelve información del restaurante
             // Aquí manejas los errores
             Log.e("RestaurantRepository", "Error: $errorMessage")
         })
+
+
+
+
+
+EJEMPLOS PARA EL LOGIN
+
+        val userRepository = UserRepository()
+
+        userRepository.fetchUsers(
+            onSuccess = { users: List<User> ->
+                // Imprimir en Log para verificar los usuarios
+                for (user in users) {
+                    Log.d("USER_DATA", "ID: ${user.user_uid}, Name: ${user.username}")
+                }
+                // Aquí podrías enviar la lista a un RecyclerView u otra lógica
+            },
+            onError = { error ->
+                Toast.makeText(this, "Error: $error", Toast.LENGTH_LONG).show()
+                Log.d("USER_DATA", "Error: $error")
+            }
+        )
+
+        val profileImage = "https://example.com/profile.jpg"
+        val typeUser = "admin"
+        val username = "newUser123"
+
+        // Llama a la función para crear el usuario
+        userRepository.createUser(profileImage, typeUser, username,
+            onSuccess = { message ->
+                // Usuario creado exitosamente
+                Toast.makeText(this, message, Toast.LENGTH_LONG).show()
+            },
+            onError = { error ->
+                // Error al crear el usuario
+                Toast.makeText(this, error, Toast.LENGTH_LONG).show()
+            }
+        )
+

@@ -6,10 +6,8 @@
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
-
     <application
         android:name=".BckEnd.config.App"
-
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
@@ -19,12 +17,45 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.SaFoodAplication"
         tools:targetApi="31">
+        <activity
+            android:name=".BckEnd.ui.NewFormalAccount"
+            android:exported="false"
+            android:label="@string/title_activity_new_formal_account"
+            android:theme="@style/Theme.SaFoodAplication" />
+        <activity
+            android:name=".BckEnd.ui.WaitingRequestActivity"
+            android:exported="false"
+            android:label="@string/title_activity_waiting_request"
+            android:theme="@style/Theme.SaFoodAplication" />
+        <activity
+            android:name=".BckEnd.ui.RequestActivity"
+            android:exported="false"
+            android:label="@string/title_activity_request"
+            android:theme="@style/Theme.SaFoodAplication" />
+        <activity
+            android:name=".BckEnd.ui.ChoosingRoleActivity"
+            android:exported="false"
+            android:label="@string/title_activity_choosing_role"
+            android:theme="@style/Theme.SaFoodAplication" />
+        <activity
+            android:name=".BckEnd.ui.StartingActivity"
+            android:exported="false"
+            android:label="@string/title_activity_starting"
+            android:theme="@style/Theme.SaFoodAplication" />
+        <activity
+            android:name=".BckEnd.ui.SplashActivity"
+            android:exported="true"
+            android:label="@string/title_activity_splash"
+            android:theme="@style/Theme.SaFoodAplication">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity
             android:name=".lobyActivity"
-            android:exported="false"/>
-
-
+            android:exported="false" />
         <activity
             android:name=".MainActivity"
             android:exported="false" />
@@ -45,14 +76,7 @@
             android:exported="false" />
         <activity
             android:name=".LobbyOwnerActivity"
-            android:exported="true" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
-
+            android:exported="false" />
     </application>
 
 </manifest>
